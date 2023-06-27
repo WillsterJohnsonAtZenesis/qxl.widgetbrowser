@@ -1,55 +1,59 @@
 {
-   "$schema": "https://qooxdoo.org/schema/compile-1-0-0.json",
-   "environment": {
-      "qx.icontheme": [
-         "Tango",
-         "Oxygen"
+  "$schema": "https://qooxdoo.org/schema/compile-1-0-0.json",
+  "environment": {
+    "qx.icontheme": ["Tango", "Oxygen"]
+  },
+  "applications": [
+    {
+      "class": "qxl.widgetbrowser.Application",
+      "theme": "qx.theme.Indigo",
+      "name": "widgetbrowser",
+      "title": "WidgetBrowser",
+      "include": [
+        "qx.theme.Indigo",
+        "qx.theme.IndigoDark",
+        "qx.theme.Modern",
+        "qx.theme.Simple",
+        "qx.theme.Classic",
+        "qx.theme.TangibleLight",
+        "qx.theme.TangibleDark",
+        "qxl.widgetbrowser.pages.Tree",
+        "qxl.widgetbrowser.pages.List",
+        "qxl.widgetbrowser.pages.Table",
+        "qxl.widgetbrowser.pages.Form",
+        "qxl.widgetbrowser.pages.ToolBar",
+        "qxl.widgetbrowser.pages.Window",
+        "qxl.widgetbrowser.pages.Tab",
+        "qxl.widgetbrowser.pages.Control",
+        "qxl.widgetbrowser.pages.Embed",
+        "qxl.widgetbrowser.pages.EmbedFrame",
+        "qxl.widgetbrowser.pages.Basic",
+        "qxl.widgetbrowser.pages.Misc"
       ]
-   },
-   "applications": [
-      {
-         "class": "qxl.widgetbrowser.Application",
-         "theme": "qx.theme.Indigo",
-         "name": "widgetbrowser",
-         "title": "WidgetBrowser",
-         "include": [
-            "qx.theme.Indigo",
-            "qx.theme.IndigoDark",
-            "qx.theme.Modern",
-            "qx.theme.Simple",
-            "qx.theme.Classic",
-            "qx.theme.TangibleLight",
-            "qx.theme.TangibleDark",
-            "qxl.widgetbrowser.pages.Tree",
-            "qxl.widgetbrowser.pages.List",
-            "qxl.widgetbrowser.pages.Table",
-            "qxl.widgetbrowser.pages.Form",
-            "qxl.widgetbrowser.pages.ToolBar",
-            "qxl.widgetbrowser.pages.Window",
-            "qxl.widgetbrowser.pages.Tab",
-            "qxl.widgetbrowser.pages.Control",
-            "qxl.widgetbrowser.pages.Embed",
-            "qxl.widgetbrowser.pages.EmbedFrame",
-            "qxl.widgetbrowser.pages.Basic",
-            "qxl.widgetbrowser.pages.Misc"
-         ]
-      }
-   ],
-   "targets": [
-      {
-         "type": "source",
-         "outputPath": "compiled/source"
+    }
+  ],
+  "targets": [
+    {
+      "type": "source",
+      "outputPath": "compiled/source",
+      "babelOptions": {
+        "targets": "Chrome >= 72, Firefox >= 64, edge >= 18"
       },
-      {
-         "type": "build",
-         "outputPath": "compiled/build"
+      "fonts": {
+        "local": true
       }
-   ],
-   "defaultTarget": "source",
-   "locales": [
-      "en"
-   ],
-   "serve": {
-      "listenPort": 8080
-   }
+    },
+    {
+      "type": "build",
+      "outputPath": "compiled/build",
+      "babelOptions": {
+        "targets": "Chrome >= 72, Firefox >= 64, edge >= 18"
+      }
+    }
+  ],
+  "defaultTarget": "source",
+  "locales": ["en"],
+  "serve": {
+    "listenPort": 8080
+  }
 }

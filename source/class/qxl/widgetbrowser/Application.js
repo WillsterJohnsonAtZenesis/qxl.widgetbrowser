@@ -19,6 +19,7 @@
 /*
  * Main Application.
  * @asset(qx/icon/*)
+ * @usefont(MaterialIcons)
  */
 qx.Class.define("qxl.widgetbrowser.Application", {
   extend: qx.application.Standalone,
@@ -50,7 +51,7 @@ qx.Class.define("qxl.widgetbrowser.Application", {
       var dockLayoutComposite = new qx.ui.container.Composite(dockLayout);
       doc.add(dockLayoutComposite, { edge: 0 });
 
-      this.__header = new qxl.widgetbrowser.view.Header();
+      this.__header = this._createHeader();
       dockLayoutComposite.add(this.__header, { edge: "north" });
 
       var scroll = (this.__scroll = new qx.ui.container.Scroll());
@@ -58,20 +59,22 @@ qx.Class.define("qxl.widgetbrowser.Application", {
 
       this.__tabs = this._createTabView();
       this.__tabs.set({
-        minWidth: 700,
-        padding: 15,
+        minWidth: 700
       });
 
       scroll.add(this.__tabs);
     },
 
     _createTabView() {
-      this.__tabs = new qxl.widgetbrowser.view.TabView();
-      return this.__tabs;
+      return new qxl.widgetbrowser.view.TabView();
+    },
+
+    _createHeader() {
+      return new qxl.widgetbrowser.view.Header();
     },
 
     getScroll() {
       return this.__scroll;
-    },
-  },
+    }
+  }
 });

@@ -40,7 +40,11 @@ qx.Class.define("qxl.widgetbrowser.view.Header", {
     this.getLayout().setAlignY("middle");
 
     var title = new qx.ui.basic.Label("Widget Browser");
-    var version = new qxl.versionlabel.VersionLabel();
+    var version = new qx.ui.basic.Label(
+      "qooxdoo " +
+        (qx.core.Environment.get("qx.revision") ||
+          qx.core.Environment.get("qx.version"))
+    );
     version.setFont("default");
     version.setAppearance("app-header-label");
 
@@ -86,5 +90,5 @@ qx.Class.define("qxl.widgetbrowser.view.Header", {
     this.add(select);
     this.add(new qx.ui.core.Spacer(), { width: "2%" });
     this.add(version);
-  },
+  }
 });

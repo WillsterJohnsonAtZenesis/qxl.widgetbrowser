@@ -38,7 +38,7 @@ qx.Class.define("qxl.widgetbrowser.view.TabView", {
         disabled: true,
         hovered: true,
         focused: true,
-        invalid: true,
+        invalid: true
       };
       var form = new qxl.widgetbrowser.view.TabPage(
         "Form",
@@ -83,7 +83,7 @@ qx.Class.define("qxl.widgetbrowser.view.TabView", {
         disabled: true,
         hovered: true,
         selected: true,
-        hidesome: true,
+        hidesome: true
       };
       var menu = new qxl.widgetbrowser.view.TabPage(
         "Toolbar/Menu",
@@ -91,6 +91,7 @@ qx.Class.define("qxl.widgetbrowser.view.TabView", {
         controls
       );
       this.add(menu);
+      this.setSelection([menu]);
 
       // Window
       classname = "qxl.widgetbrowser.pages.Window";
@@ -177,6 +178,6 @@ qx.Class.define("qxl.widgetbrowser.view.TabView", {
       if (currentTab) {
         this.setSelection([currentTab]);
       }
-    },
-  },
+    }
+  }
 });
