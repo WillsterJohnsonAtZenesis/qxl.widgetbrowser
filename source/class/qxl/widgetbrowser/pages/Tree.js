@@ -61,6 +61,7 @@ qx.Class.define("qxl.widgetbrowser.pages.Tree", {
       widgets.push(tree);
 
       // VirtualTree
+      /*
       label = new qx.ui.basic.Label("VirtualTree");
       label.setToolTip(
         new qx.ui.tooltip.ToolTip(
@@ -71,6 +72,7 @@ qx.Class.define("qxl.widgetbrowser.pages.Tree", {
       var virtualTree = this.__getVirtualTree();
       this.__grid.add(virtualTree, { row: 1, column: 1 });
       widgets.push(virtualTree);
+      */
 
       // TreeVirtual
       label = new qx.ui.basic.Label("TreeVirtual (Legacy)");

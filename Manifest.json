@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qooxdoo.org/schema/Manifest-2-0-0.json",
+  "$schema": "https://qooxdoo.org/schema/Manifest-1-0-0.json",
   "info": {
     "name": "widgetbrowser",
     "summary": "Widget browser",
@@ -7,7 +7,7 @@
     "homepage": "http://demo.qooxdoo.org/current/widgetbrowser",
     "license": "MIT",
     "authors": [],
-    "version": "2.0.1"
+    "version": "1.0.0"
   },
   "provides": {
     "namespace": "qxl.widgetbrowser",
@@ -21,12 +21,9 @@
       "name": "widgetbrowser",
       "title": "WidgetBrowser",
       "include": [
-        "qx.theme.IndigoDark",
         "qx.theme.Modern",
         "qx.theme.Simple",
         "qx.theme.Classic",
-        "qx.theme.TangibleLight",
-        "qx.theme.TangibleDark",
         "qxl.widgetbrowser.pages.Tree",
         "qxl.widgetbrowser.pages.List",
         "qxl.widgetbrowser.pages.Table",
@@ -43,6 +40,6 @@
     }
   },
   "requires": {
-    "@qooxdoo/framework": "^7.5.0"
+    "@qooxdoo/framework": "^7.0.0-beta"
   }
 }
