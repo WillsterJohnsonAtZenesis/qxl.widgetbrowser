@@ -49,45 +49,74 @@ qx.Class.define("qxl.widgetbrowser.pages.List", {
     __grid: null,
     __listUrl: null,
 
-    initWidgets() {
+    async __getData() {
+      let promise = new qx.Promise();
+      var req = new qx.io.request.Xhr(this.__listUrl);
+      req.setParser("json");
+      req.addListener("success", () =>
+        promise.resolve(req.getResponse().people)
+      );
+      req.send();
+
+      return await promise;
+    },
+
+    async initWidgets() {
       var widgets = this._widgets;
 
       var label = new qx.ui.basic.Label("List");
       this.__grid.add(label, { row: 0, column: 0 });
-      var list = this.__getList();
+      var list = await this.__getList();
       this.__grid.add(list, { row: 1, column: 0 });
       widgets.push(list);
 
       label = new qx.ui.basic.Label("List (virtual)");
       this.__grid.add(label, { row: 0, column: 1 });
-      var virtualList = this.__getVirtualList();
+      var virtualList = await this.__getVirtualList();
       this.__grid.add(virtualList, { row: 1, column: 1 });
       widgets.push(virtualList);
 
       label = new qx.ui.basic.Label("List (virtual, grouped)");
       this.__grid.add(label, { row: 0, column: 2 });
-      var groupedVirtualList = this.__getGroupedVirtualList();
+      var groupedVirtualList = await this.__getGroupedVirtualList();
       this.__grid.add(groupedVirtualList, { row: 1, column: 2 });
       widgets.push(groupedVirtualList);
+
+      label = new qx.ui.basic.Label("Checked List");
+      this.__grid.add(label, { row: 2, column: 0 });
+      var list = await this.__getCheckedList();
+      this.__grid.add(list, { row: 3, column: 0 });
+      widgets.push(list);
     },
 
-    __getList() {
+    async __getList() {
       var list = new qx.ui.form.List();
       list.setWidth(150);
 
-      var req = new qx.io.request.Xhr(this.__listUrl);
-      req.setParser("json");
-      req.addListener("success", function () {
-        var people = req.getResponse().people;
-        people.forEach(function (person) {
-          var item = new qx.ui.form.ListItem(
-            "" + person.lastname + ", " + person.firstname
-          );
-          item.setHeight(25);
-          list.add(item);
-        });
+      let people = await this.__getData();
+      people.forEach(function (person) {
+        var item = new qx.ui.form.ListItem(
+          "" + person.lastname + ", " + person.firstname
+        );
+        item.setHeight(25);
+        list.add(item);
       });
-      req.send();
+
+      return list;
+    },
+
+    async __getCheckedList() {
+      var list = new qx.ui.form.CheckedList();
+      list.setWidth(150);
+
+      let people = await this.__getData();
+      people.forEach(function (person) {
+        let item = new qx.ui.form.CheckedListItem(
+          "" + person.lastname + ", " + person.firstname
+        );
+        item.setValue(true);
+        list.add(item);
+      });
 
       return list;
     },
@@ -100,8 +129,8 @@ qx.Class.define("qxl.widgetbrowser.pages.List", {
         labelOptions: {
           converter(data, model) {
             return model ? model.getLastname() + ", " + data : "no model...";
-          },
-        },
+          }
+        }
       });
 
       this.__attachStore(list);
@@ -125,7 +154,7 @@ qx.Class.define("qxl.widgetbrowser.pages.List", {
         // Assign the group name for each item (fist char form last name)
         group(model) {
           return model.getLastname().charAt(0).toUpperCase();
-        },
+        }
       };
 
       list.setDelegate(delegate);
@@ -136,6 +165,6 @@ qx.Class.define("qxl.widgetbrowser.pages.List", {
     __attachStore(widget) {
       var store = new qx.data.store.Json(this.__listUrl);
       store.bind("model.people", widget, "model");
-    },
-  },
+    }
+  }
 });

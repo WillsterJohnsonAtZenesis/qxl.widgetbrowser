@@ -73,8 +73,7 @@ qx.Class.define("qxl.widgetbrowser.pages.Table", {
 
       table.set({
         width: 600,
-        height: 400,
-        decorator: null,
+        height: 400
       });
 
       table
@@ -107,10 +106,10 @@ qx.Class.define("qxl.widgetbrowser.pages.Table", {
           this.__nextId++,
           Math.random() * 10000,
           date,
-          Math.random() > 0.5,
+          Math.random() > 0.5
         ]);
       }
       return rowData;
-    },
-  },
+    }
+  }
 });
