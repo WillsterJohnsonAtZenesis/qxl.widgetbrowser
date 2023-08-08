@@ -149,6 +149,12 @@ qx.Class.define("qxl.widgetbrowser.view.TabView", {
       );
       this.add(basic);
 
+      // DataGrid
+      classname = "qxl.widgetbrowser.pages.DataGrid";
+      controls = {};
+      var dataGrid = new qxl.widgetbrowser.view.TabPage("DataGrid", classname, controls);
+      this.add(dataGrid);
+
       // Misc
       classname = "qxl.widgetbrowser.pages.Misc";
       controls = { disabled: true };
