@@ -6,17 +6,15 @@
   "applications": [
     {
       "class": "qxl.widgetbrowser.Application",
-      "theme": "qx.theme.Indigo",
+      "theme": "uk.co.spar.client.theme.v2.Theme",
       "name": "widgetbrowser",
       "title": "WidgetBrowser",
       "include": [
-        "qx.theme.Indigo",
-        "qx.theme.IndigoDark",
-        "qx.theme.Modern",
-        "qx.theme.Simple",
-        "qx.theme.Classic",
-        "qx.theme.TangibleLight",
-        "qx.theme.TangibleDark",
+        "qxl.widgetbrowser.theme.indigo.Theme",
+        "qxl.widgetbrowser.theme.indigo.ThemeDark",
+        "qxl.widgetbrowser.theme.simple.Theme",
+        "qxl.widgetbrowser.theme.tangible.ThemeLight",
+        "qxl.widgetbrowser.theme.tangible.ThemeDark",
         "qxl.widgetbrowser.pages.Tree",
         "qxl.widgetbrowser.pages.List",
         "qxl.widgetbrowser.pages.Table",
@@ -28,9 +26,19 @@
         "qxl.widgetbrowser.pages.Embed",
         "qxl.widgetbrowser.pages.EmbedFrame",
         "qxl.widgetbrowser.pages.Basic",
-        "qxl.widgetbrowser.pages.Misc"
+        "qxl.widgetbrowser.pages.Misc",
+        "qxl.widgetbrowser.pages.DataGrid",
+        "uk.co.spar.client.theme.v2.Theme"
       ]
     }
+  ],
+
+  "libraries": [
+    ".",
+    "../qooxdoo",
+    "../../qooxdoo/qxl.datagrid",
+    "../../ZenesisUK/Grasshopper/src/JavaScript/Grasshopper",
+    "../../ZenesisUK/www.spar.co.uk/source"
   ],
   "targets": [
     {

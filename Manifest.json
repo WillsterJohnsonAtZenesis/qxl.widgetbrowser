@@ -35,6 +35,7 @@
         "qxl.widgetbrowser.pages.Embed",
         "qxl.widgetbrowser.pages.EmbedFrame",
         "qxl.widgetbrowser.pages.Basic",
+        "qxl.widgetbrowser.pages.DataGrid",
         "qxl.widgetbrowser.pages.Misc"
       ]
     }
