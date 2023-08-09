@@ -37,43 +37,11 @@ qx.Class.define("qxl.widgetbrowser.pages.DataGrid", {
   },
 
   members: {
-    __hbox: null,
-
-    /**
-     * Builds and mounts a simple tab page
-     * @param {qx.ui.tabview.TabView} tabs - The tab view to mount to
-     * @param {string} title - The tab title
-     * @param {qx.core.Object & { init(): unknown }} uiElem - The class instance to be displayed
-     * @return {qx.ui.tabview.Page} The created tab page
-     */
-    _makeMountTab(tabs, title, uiElem) {
-      const tabPage = new qx.ui.tabview.Page(title);
-      tabs.add(tabPage);
-      tabPage.setLayout(new qx.ui.layout.Grow());
-      tabPage.add(uiElem);
-      uiElem.init();
-      return tabPage;
-    },
-
     initWidgets() {
       const widgets = this._widgets;
-
-      const tabs = new qx.ui.tabview.TabView();
+      const tabs = new qxl.datagrid.demo.Demo();
+      widgets.push(tabs);
       this.add(tabs);
-
-      // tree
-      this._makeMountTab(
-        tabs,
-        "Tree",
-        new qxl.datagrid.demo.tree.TreeDemo()
-      );
-
-      // bigGrid
-      this._makeMountTab(
-        tabs,
-        "Big Grid",
-        new qxl.datagrid.demo.biggrid.BigGridDemo()
-      );
     },
   },
 });
